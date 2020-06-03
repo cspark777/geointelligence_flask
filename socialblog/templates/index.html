@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% block div %}
+<!-- Masthead -->
+
+<div class="container">
+  <div class="row" style="margin-top: 150px;">
+    <div class="col-lg-8">
+      <div class="card first-content">
+        <div class="card-body">
+          <img src="../static/img/first_content.jpg">
+        </div>
+      </div>
+
+      {# Go through each blog post #}
+      {% for post in blog_posts.items %}
+
+      <div class="card">
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">            
+              <p class="text-muted">Published on: {{ post.date.strftime("%B %d, %Y") }}</p>
+              <h2>
+                <a class="card-title" href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a>
+              </h2>
+              <p class="text-muted">by <a class="text-muted" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></p>
+            </div>
+            <div class="col-lg-4">
+              <p>
+                <img class="post-image" src="{{ url_for('static', filename='posts/' + post.image_filename) }}" alt="{{ post.image_filename }}" style="border-radius: 10px;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+
+    <div class="col-lg-4 align-center">
+      <h4>DATOS EN TIMEPO REAL</h4>
+      <div class="card">
+        <div class="card-body">
+          <iframe id="pym-fivethirtyeight_embed_324" title="Where Do The Latest COVID-19 Models Think The U.S. Is Headed?" src="https://projects.fivethirtyeight.com/covid-forecasts/promo.html" width="300" height="300" scrolling="no"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <iframe id="pym-fivethirtyeight_embed_148" title="How Popular Is Donald Trump?" src="https://projects.fivethirtyeight.com/trump-approval-ratings/promo.html" width="300" height="200" scrolling="no"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <iframe id="pym-fivethirtyeight_embed_323" title="How many Americans are “very” worried about COVID-19’s effect on the economy?" src="https://projects.fivethirtyeight.com/coronavirus-polls/promo.html" width="300" height="275" scrolling="no"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style=" margin-top: 20px;">
+    <h2 class="block-title display-1">
+          Nuestras Areas de Trabajo
+    </h2>
+    <div class="area-card col-12 col-md-6 align-center col-lg-4">
+      <div class="card-wrap">
+          <div class="card-img">
+              <img class="workarea-image" src="../static/img/area1.jpg">
+          </div>
+          <div class="card-box p-5">
+              <h4 class="card-title display-2"><strong>
+                  INTELIGENCIA DE NEGOCIOS</strong></h4>
+              <p class="card-text display-7">Ayudamos a tu empresa a conocer mejor a tus clientes y a encontrar nuevos clientes&nbsp;</p>
+          </div>
+      </div>   
+    </div>  
+    <div class="area-card col-12 col-md-6 align-center col-lg-4">
+      <div class="card-wrap">
+          <div class="card-img">
+              <img class="workarea-image" src="../static/img/area1.jpg">
+          </div>
+          <div class="card-box p-5">
+              <h4 class="card-title display-2"><strong>
+                  NTELIGENCIA ELECTORA</strong></h4>
+              <p class="card-text display-7">Te ayudamos a ganar las elecciones y a decidir dónde tienes más oportunidades de ganar</p>
+          </div>
+      </div>   
+    </div>  
+    <div class="area-card col-12 col-md-6 align-center col-lg-4">
+      <div class="card-wrap">
+          <div class="card-img">
+              <img class="workarea-image" src="../static/img/area1.jpg">
+          </div>
+          <div class="card-box p-5">
+              <h4 class="card-title display-2"><strong>
+                 INTELIGENCIA TERRITORIAL</strong></h4>
+              <p class="card-text display-7">Obtén la máxima ventaja del conocimiento del territorio donde te desempeñas</p>
+          </div>
+      </div>   
+    </div>
+  </div>
+
+  <div class="row" style=" margin-top: 20px;">
+    <h2 class="block-title display-1">
+          NUESTRO EQUIPO
+    </h2>
+    <div class="member col-12 col-md-6 align-center col-lg-3">
+      <div class="member-wrap">
+          <div class="member-img">
+              <img src="../static/img/member1.jpg">
+          </div>
+          <div class="member-box">
+              <p style="color: #aaa; margin-bottom: 3px;">Vice President</p>
+              <p style="font-size: 20px; font-weight: bold;">ALBERT BUCCHI</p>
+              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
+                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </p>
+              <div class="row member-social">
+                <div class="col-3">
+                  <img src="../static/img/facebook.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/twitter.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/instagram.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/globe.png" style="width:32px;">
+                </div>
+              </div>
+          </div>
+      </div>   
+    </div>  
+    <div class="member col-12 col-md-6 align-center col-lg-3">
+      <div class="member-wrap">
+          <div class="member-img">
+              <img src="../static/img/member2.jpg">
+          </div>
+          <div class="member-box">
+              <p style="color: #aaa; margin-bottom: 3px;">CEO</p>
+              <p style="font-size: 20px; font-weight: bold;">STARKEY</p>
+              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
+                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </p>
+              <div class="row member-social">
+                <div class="col-3">
+                  <img src="../static/img/facebook.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/twitter.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/instagram.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/globe.png" style="width:32px;">
+                </div>
+              </div>
+          </div>
+      </div>   
+    </div>  
+    <div class="member col-12 col-md-6 align-center col-lg-3">
+      <div class="member-wrap">
+          <div class="member-img">
+              <img src="../static/img/member3.jpg">
+          </div>
+          <div class="member-box">
+              <p style="color: #aaa; margin-bottom: 3px;">ExeTv. Director</p>
+              <p style="font-size: 20px; font-weight: bold;">JOHN DOE</p>
+              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
+                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </p>
+              <div class="row member-social">
+                <div class="col-3">
+                  <img src="../static/img/facebook.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/twitter.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/instagram.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/globe.png" style="width:32px;">
+                </div>
+              </div>
+          </div>
+      </div>   
+    </div>  
+    <div class="member col-12 col-md-6 align-center col-lg-3">
+      <div class="member-wrap">
+          <div class="member-img">
+              <img src="../static/img/member4.jpg">
+          </div>
+          <div class="member-box">
+              <p style="color: #aaa; margin-bottom: 3px;">Director</p>
+              <p style="font-size: 20px; font-weight: bold;">ADDY FEUERS TEIN</p>
+              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
+                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </p>
+              <div class="row member-social">
+                <div class="col-3">
+                  <img src="../static/img/facebook.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/twitter.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/instagram.png" style="width:32px;">
+                </div>
+                <div class="col-3">
+                  <img src="../static/img/globe.png" style="width:32px;">
+                </div>
+              </div>
+          </div>
+      </div>   
+    </div>  
+  </div>
+  
+
+</div>
+{% endblock %}

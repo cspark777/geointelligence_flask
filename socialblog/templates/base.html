@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title> Geointelligence </title>
+
+  <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+    rel='stylesheet' type='text/css'>
+
+  <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <link href="../static/css/creative.css" rel="stylesheet">
+  <link href="../static/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <div class="navbar navbar-expand-lg navbar-light bg-light sb-navbar" id="mainNav1">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{{url_for('core.index')}}">  
+        <img src="../static/img/logo.png" alt="Smart analytic Logo">        
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i> 
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('core.index')}}"> Servicios </a>
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('core.info')}}"> Acerca </a>
+          </li>
+          <li class='nav-item'>
+              <a class="nav-link" href="{{url_for('core.info')}}"> Contacto </a>
+          </li>
+          <li class='nav-item'>
+            <a class="btn btn-blue btn-sm" id=btn-contact-phone href="javasacript:;">+56990207637</a>
+          </li>
+
+          <!--
+          {% if current_user.is_authenticated %}
+          
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('blog_posts.create_post')}}"> Post </a>
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('users.account')}}"> Account </a>
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('users.logout')}}"> Log Out </a>
+          </li>
+          
+          {% else %}
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('users.login')}}"> Login </a>
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="{{url_for('users.register')}}"> Register </a>
+          </li>
+          {% endif %}
+          -->
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% block div %}
+  {% endblock %}
+
+  <div class="footer-social my-5">
+    <div class="container">
+
+    </div>
+  </div>
+  <div class="footer-main bg-dark py-5 small">
+    <div class="container">
+      <a href="/about">Start Bootstrap</a>
+      is a project created and maintained by
+      <a href="http://davidmiller.io">David Miller</a>.
+      <br>
+      Themes, templates, and snippets licensed
+      <a href="https://opensource.org/licenses/MIT">MIT</a>, Start Bootstrap website
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+      <br>
+      Based on
+      <a href="https://getbootstrap.com">Bootstrap</a>.
+    </div>
+  </div>
+
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <script src="../static/js/creative.js"></script>
+
+</body>
+
+</html>
