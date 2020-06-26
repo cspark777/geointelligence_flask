@@ -175,9 +175,9 @@
         chart.update();
 
         chart_pie.config.data.datasets[0].data = [
-              -data_obj.y_negative[data_obj.y_negative.length - 1]["y"],
-              data_obj.y_neutral[data_obj.y_neutral.length - 1]["y"],
-              data_obj.y_positive[data_obj.y_positive.length - 1]["y"]
+              -msg.y_negative[msg.y_negative.length - 1]["y"],
+              msg.y_neutral[msg.y_neutral.length - 1]["y"],
+              msg.y_positive[msg.y_positive.length - 1]["y"]
               ]
         chart_pie.update();
       })
