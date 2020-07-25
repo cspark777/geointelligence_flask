@@ -1,5 +1,26 @@
-{% extends "base.html" %}
-{% block div %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />    <meta name="author" content="INSPIRO" />    
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="image/png" href="images/favicon.png">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="css/plugins.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mobirise-icons.css" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Body Inner -->
+    <div class="body-inner">
+
 <header class="masthead_register">
     <div class="container h-100">
         <div class="container">
@@ -42,20 +63,26 @@
                                         <p>Confirm Password</p>
                                         {{ form.password_confirm(class="form-control")}}
                                     </div>
-                                    {{ form.submit(class="btn btn-lg btn-primary btn-block text-uppercase") }}
-                                </form>
-                                <hr class="my-4">
-                                <form class="form-signin" action="{{url_for('users.register_google')}}">
-                                    <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
-                                            class="fab fa-google mr-2"></i> Log in with Google</button>
-                                </form>
+                                    {{ form.submit(class="btn btn-lg btn-primary btn-block text-uppercase mt-4") }}
+                                </form>                                
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    {% endblock %}
 </header>
+
+    </div>
+    <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Plugins-->
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
+    <!--Template functions-->
+    <script src="js/functions.js"></script>
+</body>
+
+</html>
+

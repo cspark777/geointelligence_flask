@@ -1,222 +1,643 @@
 {% extends "base.html" %}
 {% block div %}
-<!-- Masthead -->
-
-<div class="container">
-  <div class="row" style="margin-top: 150px;">
-    <div class="col-lg-8">
-      <div class="card first-content">
-        <div class="card-body">
-          <img src="../static/img/first_content.jpg">
+<!-- Inspiro Slider -->
+<div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-fade="true">
+    <!-- Slide 1 -->
+    <div class="slide kenburns" data-bg-image="images/main_slider.png">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="slide-captions text-center text-light">
+                <!-- Captions -->
+                <h1>Crece con Inteligencia</h1>                
+                <!-- end: Captions -->
+            </div>
         </div>
-      </div>
+    </div>
+    <!-- end: Slide 1 -->
+</div>
+<!--end: Inspiro Slider -->
+<!-- WELCOME -->
+<section class="section-welcome" id="welcome" class="p-b-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title pb-3 mbr-fonts-style display-1 white">Acerca de smartanalytics</h1>
+                <p class="mbr-text align-center display-5 pb-3 mbr-fonts-style">Smaranalytics es una empresa especializada en la ciencia de los datos que permite a tu organización a entender mejor tu entorno a través de herramientas de inteligencia artificial, bigdata y análisis geoespaciales</p>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="https://mobirise.co">CONOCE NUESTROS SERVICIOS</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end: WELCOME -->
+<section id="page-content" class="sidebar-right" style="transform: none;">
+    <div class="container" style="transform: none;">
+        <div class="row" style="transform: none;">
+            <!-- post content -->
+            <div class="content col-lg-8">
+                <!-- Page title -->
+                <div class="page-title">
+                    <h1>Recent Articles</h1>                    
+                </div>
+                <!-- end: Page title -->
+                <!-- Blog -->
+                <div id="blog" class="post-thumbnails">
+                    <!-- Post item-->
+                    <div class="post-item">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="images/blog/12.jpg">
+                                </a>     
+                                <span>smart</span><span>analytics</span>                           
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+                                <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                    
+                    <!-- Post item-->
+                    <div class="post-item">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="images/blog/17.jpg">
+                                </a>                                
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                <span class="post-meta-category"><a href=""><i class="fa fa-tag"></i>Lifestyle</a></span>
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+                                <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
 
-      {# Go through each blog post #}
-      {% for post in blog_posts.items %}
+                    <!-- Post item-->
+                    <div class="post-item">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                <a href="#">
+                                    <img alt="" src="images/blog/17.jpg">
+                                </a>                                
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                <span class="post-meta-category"><a href=""><i class="fa fa-tag"></i>Lifestyle</a></span>
+                                <h2><a href="#">Standard post with a single image
+                                    </a></h2>
+                                <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet.</p>
+                                <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                </div>
+                <!-- end: Blog -->                
+            </div>
+            <!-- end: post content -->
+            <!-- Sidebar-->
+            <div class="sidebar sticky-sidebar col-lg-4" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1004px;">                
+                <h4>DATOS EN TIMEPO REAL</h4>
+                <div class="card">
+                    <div class="card-body">
+                        <textarea id="chart1_data" style="display: none;">{{chart1_data}}</textarea>
+                    <canvas id="chart1"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="chart1_pie"></canvas>
+                    </div>
+                </div>                
+            </div>
+        </div>
+            <!-- end: Sidebar-->
+        </div>
+    </div>
+</section>
+<!-- WHAT WE DO -->
 
-      <div class="card">
-
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-8">            
-              <p class="text-muted">Published on: {{ post.date.strftime("%B %d, %Y") }}</p>
-              <h2>
-                <a class="card-title" href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a>
-              </h2>
-              <p class="text-muted">by <a class="text-muted" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></p>
+<section class="background-grey">
+    <div class="container">
+        
+        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">
+        Nuestras Areas de Trabajo</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card working-area">
+                    <img src="images/area1.jpg" alt="Mobirise" title="" class="">
+                    
+                    <div class="card-box p-5">
+                        <h4 class="card-title py-2 mbr-fonts-style align-center mbr-white display-2"><strong>
+                            INTELIGENCIA DE NEGOCIOS</strong></h4>
+                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Ayudamos a tu empresa a conocer mejor a tus clientes y a encontrar nuevos clientes&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">                
+                <div class="card working-area">
+                    <img src="images/area2.jpg" alt="Mobirise" title="" class="">
+                    
+                    <div class="card-box p-5">
+                        <h4 class="card-title py-2 mbr-fonts-style align-center mbr-white display-2"><strong>I<a href="index.html#counters1-i" class="text-white"><b>NTELIGENCIA ELECTORA</b></a>L</strong></h4>
+                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Te ayudamos a ganar las elecciones y a decidir dónde tienes más oportunidades de ganar</p>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4">
-              <p>
-                <img class="post-image" src="{{ url_for('static', filename='posts/' + post.image_filename) }}" alt="{{ post.image_filename }}" style="border-radius: 10px;"></p>
+                <div class="card working-area">
+                    <img src="images/area3.jpg" alt="Mobirise" title="" class="">
+                    
+                    <div class="card-box p-5">
+                        <h4 class="card-title py-2 mbr-fonts-style align-center mbr-white display-2"><strong>INTELIGENCIA TERRITORIAL</strong></h4>
+                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Obtén la máxima ventaja del conocimiento del territorio donde te desempeñas</p>
+                    </div>
+                </div>
+            </div>    
+        </div>        
+    </div>
+</section>
+
+<!-- END WHAT WE DO -->
+
+<!-- Inteligencia de Negocios -->
+<section class="business-intelligence" data-bg-parallax="">    
+    <div class="container">
+    	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">
+        Inteligencia de Negocios</h2>
+        <h3 class="mbr-section-subtitle mbr-fonts-style display-2">En SmartAnalytics tenemos información útil <br>para que tu empresa tenga éxito</h3>
+
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <span class="mbri-mobirise mbr-iconfont"></span>
+                    <h3 class="counter"> <span data-speed="3000" data-refresh-interval="50" data-to="3000000" data-from="600" data-seperator="true">3000000</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Consumidores</h4>
+                </div>
             </div>
-          </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <span class="mbri-touch-swipe mbr-iconfont"></span>
+                    <h3 class="counter"> <span data-speed="4500" data-refresh-interval="23" data-to="600000" data-from="100" data-seperator="true">600000</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Empresas</h4>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <span class="mbri-responsive mbr-iconfont"></span>
+                    <h3 class="counter"> <span data-speed="3000" data-refresh-interval="12" data-to="1500" data-from="50" data-seperator="true">1500</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Mapas&nbsp;</h4>
+                </div>
+            </div>            
         </div>
-      </div>
-
-      {% endfor %}
     </div>
+</section>
+<!-- END Inteligencia de Negocios -->
 
-    <div class="col-lg-4 align-center">
-      <h4>DATOS EN TIMEPO REAL</h4>
-      <div class="card">
-        <div class="card-body">
-          <textarea id="chart1_data" style="display: none;">{{chart1_data}}</textarea>
-          <canvas id="chart1"></canvas>
+<!-- Servicios para empresas -->
+<section class="servicios" data-bg-parallax="">    
+    <div class="container pt-4 mt-2">    	
+        <div class="row">
+            <div class="col-lg-6 pr-2">
+            	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
+                    Servicios para empresas</h2>
+                <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">
+                    Sácale provecho a datos complejos</h3>
+                <div class="mbr-figure">
+                    <img src="images/servicios.jpg" alt="" title="" class="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-mobirise mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+                                    Big Data y Asministración de datos</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">•	Extraer los datos.
+								<br>•	Transformarlos.
+								<br>•	Trasladarlos a un &nbsp; &nbsp; determinado sistema<br><br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-extension mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Big Data y Generación de datos</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">•	Recopilar información.
+								<br>•&nbsp;&nbsp;Aplicar técnicas de análisis predictivo.
+								<br>•	Realizar proyecciones de futuro.&nbsp;<br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-responsive mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Big data y Visualización de datos</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">
+                                        •	Reportes<br>•	Geo-referenciación<br>•	Análisis geoespaciales&nbsp;<br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-globe-2 mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-texts">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+                                    Big Data y Segmentación de datos</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">
+                                        •	Data mining<br>•	Perfilamiento&nbsp;<br>• Segmentación<br></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                      
         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <canvas id="chart1_pie"></canvas>
+    </div>
+</section>
+<!-- END Servicios para empresas -->
+
+<!-- Inteligencia Electoral -->
+<section class="inteligencia-electoral" data-bg-parallax="">    
+    <div class="container">
+    	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">
+        Inteligencia Electoral</h2>
+        <h3 class="mbr-section-subtitle mbr-fonts-style display-2">En SmartAnalytics Tenemos Información<br>para ayudarte a ganar las próximas elecciones:</h3>
+
+        <div class="row mt-5">
+            <div class="col-lg-3">
+                <div class="text-center">
+                    <span class="mbr-iconfont mbri-users"></span>
+                    <h3 class="counter"> <span data-speed="5000" data-refresh-interval="5" data-to="14000000" data-from="600" data-seperator="true">14.000.000</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">De personas habilitadas para votar</h4>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="text-center">
+                    <span class="mbr-iconfont mbri-save"></span>
+                    <h3 class="counter"> <span data-speed="4000" data-refresh-interval="10" data-to="8000000" data-from="100" data-seperator="true">8.000.000</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Personas que votaron en la ultima Elección</h4>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="text-center">
+                    <span class="mbr-iconfont mbri-responsive"></span>
+                    <h3 class="counter"> <span data-speed="3000" data-refresh-interval="500" data-to="350" data-from="50" data-seperator="true">350</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Perfiles Electorales Inteligentes</h4>
+                </div>
+            </div>    
+            <div class="col-lg-3">
+                <div class="text-center">
+                    <span class="mbr-iconfont mbri-map-pin"></span>
+                    <h3 class="counter"> <span data-speed="5000" data-refresh-interval="12" data-to="4000000" data-from="50" data-seperator="true">4.000.000</span> </h3>
+                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">De Direcciones Georreferenciadas</h4>
+                </div>
+            </div>         
         </div>
-      </div>
-      
     </div>
-  </div>
+</section>
+<!-- END Inteligencia Electoral -->
 
-  <div class="row" style=" margin-top: 20px;">
-    <h2 class="block-title display-1">
-          Nuestras Areas de Trabajo
-    </h2>
-    <div class="area-card col-12 col-md-6 align-center col-lg-4">
-      <div class="card-wrap">
-          <div class="card-img">
-              <img class="workarea-image" src="../static/img/area1.jpg">
-          </div>
-          <div class="card-box p-5">
-              <h4 class="card-title display-2"><strong>
-                  INTELIGENCIA DE NEGOCIOS</strong></h4>
-              <p class="card-text display-7">Ayudamos a tu empresa a conocer mejor a tus clientes y a encontrar nuevos clientes&nbsp;</p>
-          </div>
-      </div>   
-    </div>  
-    <div class="area-card col-12 col-md-6 align-center col-lg-4">
-      <div class="card-wrap">
-          <div class="card-img">
-              <img class="workarea-image" src="../static/img/area1.jpg">
-          </div>
-          <div class="card-box p-5">
-              <h4 class="card-title display-2"><strong>
-                  NTELIGENCIA ELECTORA</strong></h4>
-              <p class="card-text display-7">Te ayudamos a ganar las elecciones y a decidir dónde tienes más oportunidades de ganar</p>
-          </div>
-      </div>   
-    </div>  
-    <div class="area-card col-12 col-md-6 align-center col-lg-4">
-      <div class="card-wrap">
-          <div class="card-img">
-              <img class="workarea-image" src="../static/img/area1.jpg">
-          </div>
-          <div class="card-box p-5">
-              <h4 class="card-title display-2"><strong>
-                 INTELIGENCIA TERRITORIAL</strong></h4>
-              <p class="card-text display-7">Obtén la máxima ventaja del conocimiento del territorio donde te desempeñas</p>
-          </div>
-      </div>   
+
+<!-- Servicios Electorales -->
+<section class="servicios-electorales" data-bg-parallax="">    
+    <div class="container pt-4 mt-2">    	
+        <div class="row">
+            <div class="col-lg-6 pr-2">
+            	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
+                    Servicios Electorales</h2>
+                <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">
+                    La información es la clave para ganar</h3>
+                <div class="mbr-figure">
+                    <img src="images/servicios_electral.jpg" alt="" title="" class="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-question pr-2"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+                                    Diagnóstico de Electividad</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">Conozca dónde tiene más oportunidad de ganar y cuál es la mejor estrategia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-extension mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Bigdata de Votantes </h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">Obtenga información detallada de los  votantes en su sector </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbr-iconfont pr-2 mbri-magic-stick"></span>
+                            </div>
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Inteligencia Artificial</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">
+                                        Sepa cómo optimizar su campaña utilizando inteligencia artificial</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="servicios-card px-3 col-12 col-md-6">
+                        <div class="panel-item p-3">
+                            <div class="card-img pb-3">
+                                <span class="mbri-globe-2 mbr-iconfont pr-2"></span>
+                            </div>
+                            <div class="card-texts">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+                                    Mapas Electorales</h4>
+                                <p class="mbr-content-text mbr-fonts-style display-7">
+                                        Conozca la ubicación de su votantes y establezca rutas óptimas de campaña utilizando modelo de inteligencia artificial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                      
+        </div>
     </div>
-  </div>
+</section>
+<!-- END Servicios Electorales -->
 
-  <div class="row" style=" margin-top: 20px;">
-    <h2 class="block-title display-1">
-          NUESTRO EQUIPO
-    </h2>
-    <div class="member col-12 col-md-6 align-center col-lg-3">
-      <div class="member-wrap">
-          <div class="member-img">
-              <img src="../static/img/member1.jpg">
-          </div>
-          <div class="member-box">
-              <p style="color: #aaa; margin-bottom: 3px;">Vice President</p>
-              <p style="font-size: 20px; font-weight: bold;">ALBERT BUCCHI</p>
-              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
-                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-              </p>
-              <div class="row member-social">
-                <div class="col-3">
-                  <img src="../static/img/facebook.png" style="width:32px;">
+<!-- win-election -->
+<section class="win-election" data-bg-parallax="">    
+    <div class="container">
+    	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
+        ¿Quieres Ganar las Próximas Elecciones?</h2>
+        <h3 class="mbr-section-subtitle mbr-fonts-style display-5">
+        	Te ayudamos a logralo con smartanalytics</h3>        
+        <div class="row timeline-element reverse separline">
+            <span class="iconsBackground">
+                <span class="mbri-pages mbr-iconfont"></span>
+            </span>          
+            <div class="col-xs-12 col-md-6 election-card">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title mbr-fonts-style display-5">Bigdata</h4>
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">
+                        Las próximas elecciones van a ser intensivas en conocimiento. La información hará la diferencia entre ganar o perder</p>
+                 </div>
+            </div>
+        </div>
+        <div class="row timeline-element  separline">
+            <span class="iconsBackground">
+                <span class="mbri-responsive mbr-iconfont"></span>
+            </span>
+            <div class="col-xs-12 col-md-6 align-left ">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title mbr-fonts-style display-5">¿Quieres aumentar la votación?</h4>
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">Con smartintelligence puedes aumentar hasta en un 50% de tu votación</p>
                 </div>
-                <div class="col-3">
-                  <img src="../static/img/twitter.png" style="width:32px;">
+            </div>
+        </div>    
+        <div class="row timeline-element reverse separline">
+            <span class="iconsBackground">
+                <span class="mbri-watch mbr-iconfont"></span>
+            </span>
+            <div class="col-xs-12 col-md-6 align-left">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title mbr-fonts-style display-5">Georreferenciacion de Votos</h4>      
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">
+                        Nuestra plataforma GEOINTELLENCE posee georreferenciados a todos los votantes y permite realizar análsis geoespaciales para optimizar el trabajo de terreno&nbsp;</p>
                 </div>
-                <div class="col-3">
-                  <img src="../static/img/instagram.png" style="width:32px;">
+            </div>
+        </div>    
+        <div class="row timeline-element  separline">
+            <span class="iconsBackground">
+                <span class="mbri-shopping-basket mbr-iconfont"></span>
+            </span>
+            <div class="col-xs-12 col-md-6 align-left ">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title mbr-fonts-style display-5">Bigdata</h4>
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">
+                        Las próximas elecciones van a ser intensivas en conocimiento. La información hará la diferencia entre ganar o perder</p>
                 </div>
-                <div class="col-3">
-                  <img src="../static/img/globe.png" style="width:32px;">
+            </div>
+        </div>
+        <div class="row timeline-element reverse">
+            <span class="iconsBackground">
+                <span class="mbri-new-file mbr-iconfont"></span>
+            </span>
+            <div class="col-xs-12 col-md-6 align-left">
+                <div class="timeline-text-content">
+                    <h4 class="mbr-timeline-title mbr-fonts-style display-5">¿Quiénes son los votantes?</h4>
+                    <p class="mbr-timeline-text mbr-fonts-style display-7">
+                        Sabemos quiénes son y dónde se encuentran cada uno de los votantes. 
+                    </p>
                 </div>
-              </div>
-          </div>
-      </div>   
-    </div>  
-    <div class="member col-12 col-md-6 align-center col-lg-3">
-      <div class="member-wrap">
-          <div class="member-img">
-              <img src="../static/img/member2.jpg">
-          </div>
-          <div class="member-box">
-              <p style="color: #aaa; margin-bottom: 3px;">CEO</p>
-              <p style="font-size: 20px; font-weight: bold;">STARKEY</p>
-              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
-                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-              </p>
-              <div class="row member-social">
-                <div class="col-3">
-                  <img src="../static/img/facebook.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/twitter.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/instagram.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/globe.png" style="width:32px;">
-                </div>
-              </div>
-          </div>
-      </div>   
-    </div>  
-    <div class="member col-12 col-md-6 align-center col-lg-3">
-      <div class="member-wrap">
-          <div class="member-img">
-              <img src="../static/img/member3.jpg">
-          </div>
-          <div class="member-box">
-              <p style="color: #aaa; margin-bottom: 3px;">ExeTv. Director</p>
-              <p style="font-size: 20px; font-weight: bold;">JOHN DOE</p>
-              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
-                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-              </p>
-              <div class="row member-social">
-                <div class="col-3">
-                  <img src="../static/img/facebook.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/twitter.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/instagram.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/globe.png" style="width:32px;">
-                </div>
-              </div>
-          </div>
-      </div>   
-    </div>  
-    <div class="member col-12 col-md-6 align-center col-lg-3">
-      <div class="member-wrap">
-          <div class="member-img">
-              <img src="../static/img/member4.jpg">
-          </div>
-          <div class="member-box">
-              <p style="color: #aaa; margin-bottom: 3px;">Director</p>
-              <p style="font-size: 20px; font-weight: bold;">ADDY FEUERS TEIN</p>
-              <p style="font-size: 14px; color: #aaa; padding: 0 20px;">
-                Lorem Lpsum has been the industry's stbadard dummy text ever slience the 1500s, when an unknwn printer took a gallery of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-              </p>
-              <div class="row member-social">
-                <div class="col-3">
-                  <img src="../static/img/facebook.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/twitter.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/instagram.png" style="width:32px;">
-                </div>
-                <div class="col-3">
-                  <img src="../static/img/globe.png" style="width:32px;">
-                </div>
-              </div>
-          </div>
-      </div>   
-    </div>  
-  </div>
-  
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END win-election -->
 
-</div>
+<!-- Meet Geointelligence -->
+<section class="meet-geointelligence">
+    <div class="container">
+        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">
+        Conoce Geointelligence</h2>
+        <h3 class="mbr-section-subtitle mbr-fonts-style display-5">Nuestra Plataforma de Inteligencia Territorial y Electoral</h3>
+
+        <div id="blog" class="grid-layout post-3-columns m-b-30 grid-loaded" data-item="post-item" style="margin: 0px -20px -20px 0px; position: relative; height: 532.516px;">
+            <!-- Post item-->
+            <div class="post-item border" style="padding: 0px 20px 20px 0px; position: absolute; left: 0px; top: 0px;">
+                <div class="post-item-wrap">
+                    <div class="post-image">
+                        <a href="#">
+                            <img alt="" src="images/profiles.png">
+                        </a>
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="" class="btn btn-primary display-4">Learn More</a></div>
+                    </div>
+                    <div class="post-item-description">                        
+                        <h2><a href="#">Perfiles </a></h2>
+                        <p>
+                            Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
+                        </p>                        
+                    </div>
+                </div>
+            </div>
+            <!-- end: Post item-->
+            <!-- Post item-->
+            <div class="post-item border" style="padding: 0px 20px 20px 0px; position: absolute; left: 376.656px; top: 0px;">
+                <div class="post-item-wrap">
+                    <div class="post-image">
+                        <a href="#">
+                            <img alt="" src="images/Advanced geospatial analysis.png">
+                        </a>
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="" class="btn btn-primary display-4">Learn More</a></div>
+                    </div>
+                    <div class="post-item-description">                        
+                        <h2><a href="#"> Avanzados análisis geoespaciales </a></h2>
+                        <p>
+                           All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
+                        </p>                        
+                    </div>
+                </div>
+            </div>
+            <!-- end: Post item-->
+            <!-- Post item-->
+            <div class="post-item border" style="padding: 0px 20px 20px 0px; position: absolute; left: 753.312px; top: 0px;">
+                <div class="post-item-wrap">
+                    <div class="post-image">
+                        <a href="#">
+                            <img alt="" src="images/The campaign on one page.jpg">
+                        </a>
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="" class="btn btn-primary display-4">Learn More</a></div>
+                    </div>
+                    <div class="post-item-description">                        
+                        <h2><a href="#">
+                            La campaña en una página
+                            </a></h2>
+                        <p>
+                            Mobirise offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.
+                        </p>
+                        <a href="#" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- end: Post item-->
+        <div class="grid-loader"></div></div>
+    </div>
+</section>
+
+<!-- END Meet Geointelligence-->
+
+<!-- to-contact -->
+<section class="to-contact" data-bg-parallax="">    
+    <div class="container">
+    	<div class="row justify-content-center">
+    		<div class="col-12 col-lg-7 col-md-6">
+		    	<h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
+		        Obtén Grátis un Diagnóstico Electoral de tu Comuna</h2>
+		    </div>
+		    <div class="col-12 col-lg-3 col-md-4">
+		    	<a class="btn btn-primary display-4" href="index.html#form1-x">CONCERTA UNA VISITA</a>
+		    </div>
+        </div>
+
+    </div>
+</section>
+<!-- END to-contact -->
+
+<!-- to-contact -->
+<section class="contact" data-bg-parallax="">    
+    <div class="container">
+    	<div class="row">
+    		<div class="title col-12">
+                <h2 class="align-left mbr-fonts-style display-1">Contáctanos</h2>                
+            </div>
+            <div class="col-6">
+            	<div class="info-label">
+            		<h5 class="display-5">Dirección:</h5>
+            		<p class="display-7">Huérfanos 757 Of 411 Santiago</p>
+            	</div>            	
+            	<div class="info-label">
+            		<h5 class="display-5">Teléfono:</h5>
+            		<p class="display-7">+56 998382322</p>
+            	</div>
+            	<div class="info-label">
+            		<h5 class="display-5">E-mail:	</h5>
+            		<p class="display-7">contacto@smartanalytics.cl</p>
+            	</div>
+            	
+            </div>
+            <div class="col-6">
+            	<div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAEIpgj38KyLFELm2bK9Y7krBkz1K-cMq8&amp;q=place_id:Ej5IdcOpcmZhbm9zIDc1NywgT2YgNDExLCBTYW50aWFnbywgUmVnacOzbiBNZXRyb3BvbGl0YW5hLCBDaGlsZSIiGiAKFgoUChIJL7C6OqLFYpYRXddu1TwlRKgSBk9mIDQxMQ" allowfullscreen=""></iframe></div>
+            </div>
+    	</div>
+    	
+
+
+    </div>
+</section>
+<!-- END to-contact -->
+
+<!-- contact-form -->
+<section class="contact-form" data-bg-parallax="">    
+    <div class="container">
+    	<div class="row">
+    		<div class="title col-12" style="    margin-bottom: 2rem;">
+                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">FORMULARIO DE CONTACTO</h2>
+                <h3 class="mbr-section-subtitle mbr-light pb-3 mbr-fonts-style display-5">
+                    Envíanos tu informción y te contactaremos a la brevedad</h3>
+            </div>
+        </div>
+       	<div class="row justify-content-center">
+            <div class="col-lg-8">
+            	<form action="https://mobirise.com/" method="POST" class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+            		<input type="hidden" name="email" data-form-email="true" value="2V5Gwh59KFqxpPZPgKWzmyepkYisNwFFFkkhsOCBaAhBmV3gBDEJShS0sWS9KA8BSMeSJV2Na7NU0AHYOWhsF1VGM3xORSdAGbQ1qKHETi6fCQns8oqkKLB1VVPd3Emh" class="animated fadeInUp">
+                    <div class="row">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                        </div>
+                    </div>
+                    <div class="dragArea row">
+                        <div class="col-md-4  form-group" data-for="name">
+                            <label for="name-form1-x" class="form-control-label mbr-fonts-style display-7">Nombre</label>
+                            <input type="text" name="name" data-form-field="Name" required="required" class="form-control display-7" id="name-form1-x">
+                        </div>
+                        <div class="col-md-4  form-group" data-for="email">
+                            <label for="email-form1-x" class="form-control-label mbr-fonts-style display-7">Email</label>
+                            <input type="email" name="email" data-form-field="Email" required="required" class="form-control display-7" id="email-form1-x">
+                        </div>
+                        <div data-for="phone" class="col-md-4  form-group">
+                            <label for="phone-form1-x" class="form-control-label mbr-fonts-style display-7">Teléfono</label>
+                            <input type="tel" name="phone" data-form-field="Phone" class="form-control display-7" id="phone-form1-x">
+                        </div>
+                        <div data-for="message" class="col-md-12 form-group" >
+                            <label for="message-form1-x" class="form-control-label mbr-fonts-style display-7">Mensaje</label>
+                            <textarea name="message" data-form-field="Message" class="form-control display-7" id="message-form1-x"></textarea>
+                        </div>
+                        <div class="col-md-12 input-group-btn align-center"><button type="submit" class="btn btn-primary btn-form display-4">Enviar</button></div>
+                    </div>
+                </form>
+            	
+            </div>
+            
+    	</div>
+    	
+
+
+    </div>
+</section>
+<!-- END contact-form -->
+
+
 {% endblock %}

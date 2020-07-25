@@ -2,119 +2,93 @@
 <html lang="en">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title> Geointelligence </title>
-
-  <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
-    rel='stylesheet' type='text/css'>
-
-  <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
-  <link href="../static/css/creative.css" rel="stylesheet">
-  <link href="../static/css/custom.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />    <meta name="author" content="INSPIRO" />    
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="image/png" href="images/favicon.png">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>POLO | The Multi-Purpose HTML5 Template</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="css/plugins.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mobirise-icons.css" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
-<body id="page-top">
-
-  <!-- Navigation -->
-  <div class="navbar navbar-expand-lg navbar-light bg-light sb-navbar" id="mainNav1">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="{{url_for('core.index')}}">  
-        <img src="../static/img/logo.png" alt="Smart analytic Logo">        
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i> 
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('core.index')}}"> Servicios </a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('core.info')}}"> Acerca </a>
-          </li>
-          <li class='nav-item'>
-              <a class="nav-link" href="{{url_for('core.info')}}"> Contacto </a>
-          </li>
-          <li class='nav-item'>
-            <a class="btn btn-blue btn-sm" id=btn-contact-phone href="javasacript:;">+56990207637</a>
-          </li>
-
-          <!--
-          {% if current_user.is_authenticated %}
-          
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('blog_posts.create_post')}}"> Post </a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('users.account')}}"> Account </a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('users.logout')}}"> Log Out </a>
-          </li>
-          
-          {% else %}
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('users.login')}}"> Login </a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="{{url_for('users.register')}}"> Register </a>
-          </li>
-          {% endif %}
-          -->
-          
-        </ul>
-      </div>
+<body>
+    <!-- Body Inner -->
+    <div class="body-inner">        
+        <!-- Header -->
+        <header id="header" data-fullwidth="true">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo">
+                        <a href="index.html">
+                            <span class="logo-default"><img src="images/brain.jpg"></span>
+                            <span style="color: #833ccc">smart</span><span style="color: #36daf5;">analytics</span>  
+                        </a>
+                    </div>
+                    <!--End: Logo-->                                       
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <a class="lines-button x"><span class="lines"></span></a>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul style="float: left; margin-right: 3rem;">
+                                  <li><a href="index.html">Home</a></li>
+                                  <li><a href="index.html">Servicios</a></li>
+                                  <li><a href="index.html">Acerca</a></li>
+                                  <li><a href="index.html">Contacto</a></li>
+                                </ul>
+                                <div class="menu-phone-number">
+                                    <a class="btn btn-sm btn-primary display-4 pt-1" href="tel:+1-234-567-8901">
+                                        <span class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn">
+                                        </span>  +56990207637
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->
+        <!-- Page Content -->
+        {% block div %}
+        {% endblock %}
+        <!-- end: Page Content -->
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright-content">
+                <div class="container">
+                    <div class="copyright-text text-center">&copy; 2020 Geo Intelligence. All Rights Reserved.<a href="//www.geointelligence.com" target="_blank" rel="noopener"> Geo Intelligence</a> </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end: Footer -->
     </div>
-  </div>
+    <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Plugins-->
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
 
-  {% block div %}
-  {% endblock %}
-
-  <div class="footer-social my-5">
-    <div class="container">
-
-    </div>
-  </div>
-  <div class="footer-main bg-dark py-5 small">
-    <div class="container">
-      <a href="/about">Start Bootstrap</a>
-      is a project created and maintained by
-      <a href="http://davidmiller.io">David Miller</a>.
-      <br>
-      Themes, templates, and snippets licensed
-      <a href="https://opensource.org/licenses/MIT">MIT</a>, Start Bootstrap website
-      <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
-      <br>
-      Based on
-      <a href="https://getbootstrap.com">Bootstrap</a>.
-    </div>
-  </div>
-
-  <script src="../static/vendor/jquery/jquery.min.js"></script>
-  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-  <script src="../static/js/moment.min.js"></script>
-  <script src="../static/js/Chart.min.js"></script>
-  <script src="../static/js/utils.js"></script>
-
-  <script src="../static/js/creative.js"></script>
-  <script src="../static/js/custom.js"></script>
-
+    <script src="plugins/moment/moment.min.js"></script>
+    <script src="plugins/Chart.min.js"></script>
+    <script src="js/utils.js"></script>
+    <!--Template functions-->
+    <script src="js/functions.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 
 </html>
+

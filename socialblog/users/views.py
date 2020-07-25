@@ -37,7 +37,7 @@ def register():
             db.session.commit()
             msg = Message('Geointelligence Blog', sender='geointelligence@gmail.com',
                           recipients=[user.email], html=render_template('welcome.html'))
-            mail.send(msg)
+            #mail.send(msg)
             flash(u'Your account has been created', 'alert alert-success')
             return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
@@ -61,76 +61,6 @@ def login():
         return redirect(next_page)
 
     return render_template('login.html', form=form)
-
-
-@users.route('/googleregister', methods=['GET', 'POST'])
-def register_google():
-
-    form = GooglePassword()
-
-    if not google.authorized:
-        return redirect(url_for('google.login'))
-
-    resp = google.get("/oauth2/v2/userinfo")
-    assert resp.ok, resp.text
-    email = resp.json()["email"]
-    name = email.split('@')[0]
-
-    if form.validate_on_submit():
-
-        reg_email = email
-
-        if User.query.filter_by(email=reg_email).first():
-            flash('This account already existed')
-            return redirect(url_for('users.login'))
-        else:
-            user = User(email=email,
-                        username=name, password=form.password.data)
-            db.session.add(user)
-            db.session.commit()
-            msg = Message('Geointelligence Blog', sender='geointelligence@gmail.com',
-                          recipients=[user.email], html=render_template('welcome.html'))
-            mail.send(msg)
-            flash(u'Your account has been created', 'alert alert-success')
-            return redirect(url_for('users.login'))
-
-    return render_template('password.html', form=form, email=email, name=name)
-
-
-@oauth_authorized.connect_via(oauth_blueprint)
-def google_logged_in(blueprint, token):
-
-    form = GooglePassword()
-
-    if form.validate_on_submit():
-
-        resp = blueprint.session.get("/oauth_blueprint")
-        assert resp.ok, resp.text
-
-        email = resp.json()["email"]
-        name = email.split('@')[0]
-        password = form.password.data
-
-        query = User.query.filter_by(email=email)
-
-        try:
-            user = query.first()
-
-        except NoResultFound:
-            user = User(email=email, username=name, password=password)
-
-        db.session.add(user)
-        db.commit()
-
-        login_user(user)
-
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('core.index')
-        return redirect(next_page)
-
-    return render_template('password.html', form=form)
-
 
 # Sending Email
 def sendresetemail(user):

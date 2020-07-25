@@ -37,14 +37,12 @@ def generate_graph1_data():
     
     time_now = datetime.utcnow()
 
-    print(time_now.strftime('%H:%M:%S'))
+    #print(time_now.strftime('%H:%M:%S'))
 
     time_interval_before = timedelta(hours=0, minutes=0, seconds=g_update_interval_time)
 
     time_interval = (time_now - time_interval_before).strftime('%Y-%m-%d %H:%M:%S')
     query = "SELECT SUM(IF(polarity=-1, 1, 0)) AS negative, SUM(IF(polarity=0, 1, 0)) AS neutral, SUM(IF(polarity=1, 1, 0)) AS positive FROM {} WHERE created_at >= '{}' ".format(settings.TABLE_NAME, time_interval)
-
-    #print(query)
 
     graph_data = None
     if mydb.is_connected():
@@ -56,7 +54,7 @@ def generate_graph1_data():
     if graph_data[0][0] is None:
         graph_data[0] = (random.randint(1,20), random.randint(50,100), random.randint(1,20))
 
-    print(graph_data)
+    #print(graph_data)
 
     t = int(round(time.time() * 1000))
 
@@ -82,8 +80,8 @@ def index():
 
     chart1_data = json.dumps(json_obj)
 
-    print(list(g_graph1_data))
-    print(chart1_data)
+    #print(list(g_graph1_data))
+    #print(chart1_data)
 
     return render_template('index.html', blog_posts=blog_posts, chart1_data=chart1_data)
 

@@ -15,8 +15,11 @@ import sqlalchemy_utils
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_dance.contrib.google import make_google_blueprint, google
 
-
-app = Flask(__name__)
+#static_path = os.path.dirname('socialblog/static/')
+#print(static_path)
+basedir = os.path.abspath(os.path.dirname(__file__))
+static_path = basedir + "/static/"
+app = Flask(__name__, static_folder=static_path)
 
 app.config['SECRET_KEY'] = 'myscecret'
 
