@@ -55,7 +55,7 @@
       },
       options: {
         responsive: true,
-          maintainAspectRatio: false,
+          maintainAspectRatio: true,
 
         animation: {
           duration: 0
@@ -77,6 +77,7 @@
               sampleSize: 100
             },
             afterBuildTicks: function(scale, ticks) {
+              return ticks;
               var majorUnit = scale._majorUnit;
               var firstTick = ticks[0];
               var i, ilen, val, tick, currMajor, lastMajor;
