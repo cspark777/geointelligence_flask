@@ -19,16 +19,20 @@ os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
 
 users = Blueprint('users', __name__)
 
-
+'''
 # register
 @users.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         reg_email = form.email.data
+        reg_username = form.username.data
 
         if User.query.filter_by(email=reg_email).first():
-            flash('This account already existed')
+            flash('This email already existed')
+            return redirect(url_for('users.register'))
+        elif User.query.filter_by(username=reg_username).first():
+            flash('This username already existed')
             return redirect(url_for('users.register'))
         else:
             user = User(email=form.email.data,
@@ -41,7 +45,7 @@ def register():
             flash(u'Your account has been created', 'alert alert-success')
             return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
-
+'''
 
 # login
 @users.route('/login', methods=['GET', 'POST'])
@@ -160,6 +164,7 @@ def account():
 
 # user's list of Blog Post
 @users.route('/<username>')
+@login_required
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()

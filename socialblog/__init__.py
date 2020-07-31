@@ -78,6 +78,7 @@ from socialblog.users.views import oauth_blueprint
 from socialblog.blog_posts.views import blog_posts
 from socialblog.error_pages.handler import error_pages
 from socialblog.comments.views import user_comments
+from socialblog.backend.views import backend
 
 app.register_blueprint(core)
 app.register_blueprint(users)
@@ -85,3 +86,4 @@ app.register_blueprint(blog_posts)
 app.register_blueprint(error_pages)
 app.register_blueprint(oauth_blueprint, url_prefix='/login')
 app.register_blueprint(user_comments)
+app.register_blueprint(backend)

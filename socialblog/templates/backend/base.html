@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />    <meta name="author" content="INSPIRO" />    
+    <meta name="description" content="Themeforest Template Polo, html template">
+    <link rel="icon" type="image/png" href="images/favicon.png">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>GeoIntelligence</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="{{url_for('static', filename='css/plugins.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/mobirise-icons.css')}}" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/custom.css')}}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Body Inner -->
+    <div class="body-inner">        
+        <!-- Header -->
+        <header id="header" data-fullwidth="true">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo">
+                        <a href="index.html">
+                            <span class="logo-default"><img src="{{url_for('static', filename='images/brain.jpg')}}"></span>
+                            <span style="color: #833ccc">smart</span><span style="color: #36daf5;">analytics</span>  
+                        </a>
+                    </div>
+                    <!--End: Logo-->                                       
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <a class="lines-button x"><span class="lines"></span></a>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul style="float: left; margin-right: 3rem;">
+                                  <li><a href="/backend/">Home</a></li>
+                                  {% if current_user.username=="admin" %}
+                                  <li><a href="/backend/users">Users</a></li>
+                                  {% endif %}
+                                  <li><a href="/backend/posts">Posts</a></li>
+                                  <li><a href="/logout">Logout</a></li>
+                                </ul>                                
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->
+        <!-- Page Content -->
+        {% block div %}
+        {% endblock %}
+        <!-- end: Page Content -->
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright-content">
+                <div class="container">
+                    <div class="copyright-text text-center">&copy; 2020 Geo Intelligence. All Rights Reserved.<a href="//www.geointelligence.com" target="_blank" rel="noopener"> Geo Intelligence</a> </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end: Footer -->
+    </div>
+    <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Plugins-->
+    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{url_for('static', filename='js/plugins.js')}}"></script>
+
+    <script src="{{url_for('static', filename='plugins/moment/moment.min.js')}}"></script>
+    <script src="{{url_for('static', filename='plugins/Chart.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/utils.js')}}"></script>
+    <!--Template functions-->
+    <script src="{{url_for('static', filename='js/functions.js')}}"></script>
+    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+</body>
+
+</html>
+

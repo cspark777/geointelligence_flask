@@ -3845,7 +3845,7 @@ section {
 	Typography : Font size
 -----------------------------------------------------------------*/
 html {
-  font-size: 16px;
+  font-size: 88%;
 }
 
 @media all and (max-width: 768px) {
