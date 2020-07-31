@@ -136,3 +136,4 @@ settings.py
 test.py
 credentials.py
 automation.py
+socialblog/data.sqlite
