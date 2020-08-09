@@ -12,7 +12,10 @@
     <!-- Stylesheets & Fonts -->
     <link href="{{url_for('static', filename='css/plugins.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/mobirise-icons.css')}}" rel="stylesheet">    
+    <link href="{{url_for('static', filename='css/mobirise-icons.css')}}" rel="stylesheet">   
+    <!-- DataTables css -->
+    <link href='{{url_for('static', filename='plugins/datatables/datatables.min.css')}}' rel='stylesheet' />
+     
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
     <link href="{{url_for('static', filename='css/custom.css')}}" rel="stylesheet">
 </head>
@@ -25,10 +28,17 @@
             <div class="header-inner">
                 <div class="container">
                     <!--Logo-->
-                    <div id="logo">
+                    <div id="logo"> 
                         <a href="index.html">
-                            <span class="logo-default"><img src="{{url_for('static', filename='images/brain.jpg')}}"></span>
-                            <span style="color: #833ccc">smart</span><span style="color: #36daf5;">analytics</span>  
+                            <span class="logo-default">
+                                <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="img-logo">
+                                <span style="color: #833ccc;">Smart</span>
+                                <span style="color: #36daf5;">Analytics</span>
+                                <span class="logo-dark">
+                                    <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="img-logo">
+                                    SmartAnalytics
+                                </span>
+                            </span>
                         </a>
                     </div>
                     <!--End: Logo-->                                       
@@ -42,9 +52,9 @@
                         <div class="container">
                             <nav>
                                 <ul style="float: left; margin-right: 3rem;">
-                                  <li><a href="/backend/">Home</a></li>
+                                  <li><a href="/">Home</a></li>
                                   {% if current_user.username=="admin" %}
-                                  <li><a href="/backend/users">Users</a></li>
+                                  <!--<li><a href="/backend/users">Users</a></li>-->
                                   {% endif %}
                                   <li><a href="/backend/posts">Posts</a></li>
                                   <li><a href="/logout">Logout</a></li>
@@ -80,6 +90,11 @@
 
     <script src="{{url_for('static', filename='plugins/moment/moment.min.js')}}"></script>
     <script src="{{url_for('static', filename='plugins/Chart.min.js')}}"></script>
+    <!--Datatables plugin files-->
+    <script src='{{url_for('static', filename='plugins/datatables/datatables.min.js')}}'></script>
+
+    <script src="{{url_for('static', filename='plugins/bootbox/bootbox.min.js')}}" type="text/javascript"></script>
+
     <script src="{{url_for('static', filename='js/utils.js')}}"></script>
     <!--Template functions-->
     <script src="{{url_for('static', filename='js/functions.js')}}"></script>

@@ -1,10 +1,12 @@
 # backend/views.py
 
-from flask import render_template, url_for, flash, request, redirect, Blueprint
+from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from socialblog import db
 from socialblog.models import BlogPost, Comments
 from socialblog.backend.forms import BackendForm
+from socialblog.blog_posts.forms import BlogPostForm
+
 from socialblog import images
 
 
@@ -14,7 +16,8 @@ backend = Blueprint('backend', __name__)
 @backend.route('/backend/', methods=['GET', 'POST'])
 @login_required
 def backend_dashboard():      
-    return render_template('/backend/dashboard.html')
+    #return render_template('/backend/dashboard.html')
+    return redirect('/backend/posts')
 
 '''
 # users
@@ -33,6 +36,81 @@ def backend_users():
 @backend.route('/backend/posts', methods=['GET', 'POST'])
 @login_required
 def backend_posts():    
-    print(current_user)
-    return render_template('/backend/posts.html')
+    if current_user.username == "admin":
+        blog_posts = BlogPost.query.order_by(BlogPost.date.desc()).all()    
+    else:
+        blog_posts = BlogPost.query.filter_by(user_id=current_user.id).order_by(BlogPost.date.desc()).all()
 
+    return render_template('/backend/posts.html', posts=blog_posts)
+
+# CREATE
+@backend.route('/backend/post/create', methods=['GET', 'POST'])
+@login_required
+def create_post():
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        if form.post_image.data:
+            filename = images.save(request.files['post_image'])
+            url = images.url(filename)
+            blog_post = BlogPost(title=form.title.data,
+                             text=form.text.data, user_id=current_user.id, image_filename=filename, image_url=url)
+
+        else:
+            blog_post = BlogPost(title=form.title.data,
+                             text=form.text.data, user_id=current_user.id)
+         
+        db.session.add(blog_post)
+        db.session.commit()
+        return redirect(url_for('backend.backend_posts'))
+    return render_template('/backend/create_post.html', title='Updating', form=form, page_name="New Post")
+
+
+# UPDATE
+@backend.route('/backend/post/<int:post_id>/update', methods=['GET', 'POST'])
+@login_required
+def update(post_id):
+    blog_post = BlogPost.query.get_or_404(post_id)
+
+    #print(blog_post.author)
+    #print(current_user)
+    if current_user.username != "admin":
+        if blog_post.author != current_user:
+            abort(403)
+
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        blog_post.title = form.title.data
+        blog_post.text = form.text.data
+
+        if form.post_image.data:
+            filename = images.save(request.files['post_image'])
+            url = images.url(filename)
+
+            blog_post.image_filename = filename
+            blog_post.image_url = url
+
+        print(blog_post.image_filename)
+        print(blog_post.image_url)
+
+        db.session.commit()
+        flash(u'Your Post has been updated', 'alert alert-success')
+        return redirect(url_for('backend.backend_posts'))
+
+    form.title.data = blog_post.title
+    form.text.data = blog_post.text
+    return render_template('/backend/create_post.html', title='Updating', form=form, page_name="Update Post")
+
+# DELETE
+@backend.route('/backend/post/<int:post_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_post(post_id):
+    blog_post = BlogPost.query.get_or_404(post_id)
+
+    if current_user.username != "admin":
+        if blog_post.author != current_user:
+            abort(403)
+
+    db.session.delete(blog_post)
+    db.session.commit()
+    flash(u'Blog Post Deleted', 'alert alert-warning')
+    return redirect(url_for('backend.backend_posts'))

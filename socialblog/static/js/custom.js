@@ -7,7 +7,7 @@
       var data_obj = JSON.parse(data_json);
 
       var ctx = document.getElementById('chart1').getContext('2d');
-      //ctx.canvas.width = 1000;
+      ctx.canvas.width = 250;
       ctx.canvas.height = 250;
 
       var color = Chart.helpers.color;
@@ -57,7 +57,7 @@
         },
         options: {
           responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
 
           animation: {
             duration: 0
@@ -135,6 +135,7 @@
 
       var chart = new Chart(ctx, cfg);
 
+
       var ctx_pie = document.getElementById('chart1_pie').getContext('2d');
       var cfg_pie = {
         type: 'pie',
@@ -169,12 +170,13 @@
       function update_chart(){
         $.ajax({
             method: "GET",
-            url: "./get_chart1_data",                    
+            url: "/get_chart1_data",                    
         })
         .done(function(msg) {      
           chart.config.data.datasets[0].data = msg.y_negative;
           chart.config.data.datasets[1].data = msg.y_neutral;
           chart.config.data.datasets[2].data = msg.y_positive;
+
           chart.update();
 
           chart_pie.config.data.datasets[0].data = [
@@ -191,5 +193,20 @@
 
       setInterval(update_chart, 10*1000)
     }
+
+    var post_table = $('#post_table').DataTable();
+
+    $(".delete-btn").on("click", function(e){
+      var id = $(this).data('id');
+      var title = $(this).data('title');
+      var msg = "Are you sure to delete?";
+
+      bootbox.confirm("Are you sure to delete?", function(result) {
+        if (result == true){
+          window.location="/backend/post/" + id + "/delete";
+        }
+      }); 
+
+    });
  
 })(jQuery); // End of use strict

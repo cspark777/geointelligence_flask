@@ -19,7 +19,7 @@ os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
 
 users = Blueprint('users', __name__)
 
-'''
+
 # register
 @users.route('/register', methods=['GET', 'POST'])
 def register():
@@ -45,7 +45,7 @@ def register():
             flash(u'Your account has been created', 'alert alert-success')
             return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
-'''
+
 
 # login
 @users.route('/login', methods=['GET', 'POST'])
@@ -61,7 +61,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page:
-            next_page = url_for('core.index')
+            next_page = url_for('backend.backend_dashboard')
         return redirect(next_page)
 
     return render_template('login.html', form=form)

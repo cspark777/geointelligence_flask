@@ -31,9 +31,9 @@ TOP_LEVEL_DIR = os.path.abspath(os.curdir)
 
 
 app.config['UPLOADS_DEFAULT_DEST'] = TOP_LEVEL_DIR + '/socialblog/static/posts/'
-app.config['UPLOADS_DEFAULT_URL'] = 'http://localhost:5000/static/posts/'
+app.config['UPLOADS_DEFAULT_URL'] = '/posts/'
 app.config['UPLOADED_IMAGES_DEST'] = TOP_LEVEL_DIR + '/socialblog/static/posts/'
-app.config['UPLOADED_IMAGES_URL'] = 'http://localhost:5000/static/posts/'
+app.config['UPLOADED_IMAGES_URL'] = '/posts/'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
