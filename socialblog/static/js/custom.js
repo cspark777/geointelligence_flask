@@ -194,7 +194,9 @@
       setInterval(update_chart, 10*1000)
     }
 
-    var post_table = $('#post_table').DataTable();
+    var post_table = $('#post_table').DataTable({
+       responsive: true
+    });
 
     $(".delete-btn").on("click", function(e){
       var id = $(this).data('id');
