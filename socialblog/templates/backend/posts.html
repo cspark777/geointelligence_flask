@@ -52,7 +52,16 @@
                                 <td>{{ post.text }} </td>
                             {% endif %}
 
-                            <td><img src="{{ post.image_url }}" style="width: 150px;"></td>
+                            <td>
+                            {% if post.image_type == "video" %}
+                            <video playsinline="" loop="true" muted="true" poster="" preload="">
+                                <source src="{{ post.image_url }}" type="video/mp4">
+                            </video>
+                            {% else %}
+                                <img src="{{ post.image_url }}" style="width: 150px;">
+                            {% endif %}
+                            </td>
+
                             <td>{{ post.author.username }}</td>
                             <td>{{ post.date.strftime("%B %d, %Y") }}</td>
                             <td>

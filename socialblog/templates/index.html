@@ -79,7 +79,15 @@
                 <div class="post-item border side-image-post">
                     <div class="post-item-wrap">
                         <div class="post-image">
-                            <a href="/post/{{ post.id }}"> <img alt="" src="{{ post.image_url }}"> </a>
+                            <a href="/post/{{ post.id }}"> 
+                                {% if post.image_type == "video" %}
+                                <video playsinline="" loop="true" controls preload="true">
+                                    <source src="{{ post.image_url }}" type="video/mp4">
+                                </video>
+                                {% else %}
+                                    <img src="{{ post.image_url }}">
+                                {% endif %}
+                            </a>
                         </div>
                         <div class="post-item-description"> <span class="post-meta-date"><i
                                     class="fa fa-calendar-o"></i>{{ post.date.strftime("%B %d, %Y") }}</span> 

@@ -26,7 +26,13 @@
                         <div class="post-item-wrap">
                             <div class="post-image-div">
                                 <a href="#">
-                                    <img alt="" src="{{ post.image_url }}">
+                                    {% if post.image_type == "video" %}
+                                    <video playsinline="" loop="true" controls preload="true">
+                                        <source src="{{ post.image_url }}" type="video/mp4">
+                                    </video>
+                                    {% else %}
+                                        <img src="{{ post.image_url }}" style="width: 150px;">
+                                    {% endif %}
                                 </a>
                             </div>
                             <div class="post-item-description">

@@ -69,8 +69,11 @@ mail = Mail(app)
 
 
 # Configure the image uploading via Flask-Uploads
+
 images = UploadSet('images', IMAGES)
-configure_uploads(app, images)
+VIDEOS = ('mp4', 'mov')
+videos = UploadSet('videos', VIDEOS)
+configure_uploads(app, (images, videos))
 
 from socialblog.core.views import core
 from socialblog.users.views import users

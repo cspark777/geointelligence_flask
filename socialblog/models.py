@@ -74,13 +74,15 @@ class BlogPost(db.Model):
                                lazy=True, cascade="all, delete, delete-orphan")
     image_filename = db.Column(db.String, default=None, nullable=True)
     image_url = db.Column(db.String, default=None, nullable=True)
+    image_type = db.Column(db.String, default=None, nullable=True)
 
-    def __init__(self, title, text, user_id, image_filename=None, image_url=None):
+    def __init__(self, title, text, user_id, image_filename=None, image_url=None, image_type=None):
         self.title = title
         self.text = text
         self.user_id = user_id
         self.image_filename = image_filename
         self.image_url = image_url
+        self.image_type = image_type
 
     def __repr__(self):
         return "Post ID: {  } -- Date: {  } --- {  } ".format(self.id, self.date, self.title)

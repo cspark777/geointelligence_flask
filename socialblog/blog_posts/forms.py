@@ -7,5 +7,5 @@ from socialblog import images
 class BlogPostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired()])
-    post_image = FileField('Add a post image', validators=[FileAllowed(images, 'Images only!')]) 
+    post_image = FileField('Add a post image', validators=[FileAllowed(['jpg', 'png', 'mp4', 'mov'], 'Images and Videos only!')]) 
     submit = SubmitField("Post")

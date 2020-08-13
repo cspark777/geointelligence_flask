@@ -8,7 +8,7 @@ from socialblog.backend.forms import BackendForm
 from socialblog.blog_posts.forms import BlogPostForm
 from socialblog.charts.forms import ChartForm
 
-from socialblog import images
+from socialblog import images, videos
 
 
 backend = Blueprint('backend', __name__)
@@ -51,10 +51,20 @@ def create_post():
     form = BlogPostForm()
     if form.validate_on_submit():
         if form.post_image.data:
-            filename = images.save(request.files['post_image'])
-            url = images.url(filename)
+            
+            content_type = request.files['post_image'].content_type
+
+            if "video" in content_type:
+                filename = videos.save(request.files['post_image'])    
+                content_type = "video"
+                url = videos.url(filename)
+            else:
+                filename = images.save(request.files['post_image'])
+                content_type = "image"
+                url = images.url(filename)
+
             blog_post = BlogPost(title=form.title.data,
-                             text=form.text.data, user_id=current_user.id, image_filename=filename, image_url=url)
+                             text=form.text.data, user_id=current_user.id, image_filename=filename, image_url=url, image_type=content_type)
 
         else:
             blog_post = BlogPost(title=form.title.data,
@@ -79,19 +89,33 @@ def update(post_id):
             abort(403)
 
     form = BlogPostForm()
+    
     if form.validate_on_submit():
         blog_post.title = form.title.data
         blog_post.text = form.text.data
 
         if form.post_image.data:
-            filename = images.save(request.files['post_image'])
-            url = images.url(filename)
+
+            content_type = request.files['post_image'].content_type
+
+            if "video" in content_type:
+                filename = videos.save(request.files['post_image'])    
+                content_type = "video"
+                url = videos.url(filename)
+            else:
+                filename = images.save(request.files['post_image'])
+                content_type = "image"
+                url = images.url(filename)
+            
+            
 
             blog_post.image_filename = filename
             blog_post.image_url = url
+            blog_post.image_type = content_type
 
         print(blog_post.image_filename)
         print(blog_post.image_url)
+        print(blog_post.image_type)
 
         db.session.commit()
         flash(u'Your Post has been updated', 'alert alert-success')
