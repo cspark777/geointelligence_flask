@@ -109,6 +109,40 @@ class Comments(db.Model, UserMixin):
     def __repr__(self):
         return "{self.text}"
 
+class Charts(db.Model, UserMixin):
+
+    __tablename__ = 'charts'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+
+    def __init__(self, title, description):
+        self.title = title
+        self.text = description
+        
+    def __repr__(self):
+        return "{self.description}"
+
+class Contacts(db.Model):
+    __tablename__ = 'contacts'   
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    phone = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    
+    def __init__(self, name, phone, email, message):
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.message = message
+        
+    def __repr__(self):
+        return "Contact ID: {  }, Name: {  }, Phone: {  }, email: {  }, message: {  }, Date: {  }".format(self.id, self.name, self.phone, self.email, self.message, self.created_at)
+
+
 # Admin Model and View
 class MyModelView(ModelView):
     def is_accessible(self):

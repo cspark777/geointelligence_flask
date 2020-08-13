@@ -44,7 +44,8 @@
  </div>
  <!--end: Inspiro Slider -->
  <input type="hidden" id="chart1_data" value="{{ chart1_data }}">
- <section class="section-space scion-article">
+ <input type="hidden" id="chart1_title" value="{{ chart1_title }}">
+ <section class="section-space secion-article">
     <div class="container">
 
         <div class="row">
@@ -69,9 +70,11 @@
                 </div>
             </div>
             <div class="col-12 col-xl-8">
+                
                 <div class="heading-text heading-section">
-                    <h4>Artículos Recientes</h4>
+                    <h4>Artículos Recientes</h4> <a href="/post_list"> <span>View all posts</span></a>
                 </div>
+                
                 {% for post in posts.items %} 
                 <div class="post-item border side-image-post">
                     <div class="post-item-wrap">
@@ -83,11 +86,11 @@
                                     <span
                                 class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i>By {{ post.author.username }}</a></span>
                             <h2><a href="#">{{ post.title }} </a></h2>
-                            {% if post.text|length > 100 %}
-                                <td>{{ post.text[0:100] }} ...</td>
+                            {% if post.text|length > 400 %}
+                                <td>{{ post.text[0:400] }} ...</td>
                             {% else %} 
                                 <td>{{ post.text }} </td>
-                            {% endif %}
+                            {% endif %} &nbsp
                             <a href="/post/{{ post.id }}" class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -732,29 +735,30 @@
                  </div>
              </div>
              <div class="col-lg-5 offset-lg-1">
-                 <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form"
+                 <form class="contact-form" novalidate action="/contact" role="form"
                      method="post">
+                     {{ form.hidden_tag() }}
                      <div class="row">
                          <div class="form-group col-md-12">
                              <label for="name">Nombre</label>
-                             <input type="text" aria-required="true" required name="widget-contact-form-name"
+                             <input type="text" aria-required="true" required name="name"
                                  class="form-control required name" placeholder="Introduzca su nombre">
                          </div>
                          <div class="form-group col-md-6">
-                             <label for="name">Teléfono</label>
-                             <input type="text" aria-required="true" required name="widget-contact-form-name"
+                             <label for="phone">Teléfono</label>
+                             <input type="text" aria-required="true" required name="phone"
                                  class="form-control required name" placeholder="Ingrese su número telefónico">
                          </div>
                          <div class="form-group col-md-6">
                              <label for="email">Email</label>
-                             <input type="email" aria-required="true" required name="widget-contact-form-email"
+                             <input type="email" aria-required="true" required name="email"
                                  class="form-control required email" placeholder="Introduce tu correo
                                  electrónico">
                          </div>
                      </div>
                      <div class="form-group">
                          <label for="message">Mensaje</label>
-                         <textarea type="text" required name="widget-contact-form-message" rows="8"
+                         <textarea type="text" required name="message" rows="8"
                              class="form-control required" placeholder="Ingrese su mensaje"></textarea>
                      </div>
                      <div class="form-group">

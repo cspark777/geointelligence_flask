@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block div %}
+<section class="section-content" id="welcome" class="p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="content col-lg-12">                
+                <div class="breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Post list</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="line"></div>                
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="post_table" class="table table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th width="5%">No</th>
+                            <th width="45%">Image</th>
+                            <th width="50%">Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for post in posts %} 
+                        <tr>   
+                            <td>{{ loop.index }} </td>                    
+                            <td>
+                                <img src="{{ post.image_url }}" style="width: 100%;">
+                            </td>
+                            <td>
+                            {% if post.text|length > 400 %}
+                                {{ post.text[0:400] }} ...
+                            {% else %} 
+                                {{ post.text }}
+                            {% endif %}                            
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

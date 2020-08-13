@@ -3,9 +3,10 @@
 from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from socialblog import db
-from socialblog.models import BlogPost, Comments
+from socialblog.models import BlogPost, Comments, Charts, Contacts
 from socialblog.backend.forms import BackendForm
 from socialblog.blog_posts.forms import BlogPostForm
+from socialblog.charts.forms import ChartForm
 
 from socialblog import images
 
@@ -114,3 +115,46 @@ def delete_post(post_id):
     db.session.commit()
     flash(u'Blog Post Deleted', 'alert alert-warning')
     return redirect(url_for('backend.backend_posts'))
+
+
+
+# posts
+@backend.route('/backend/charts', methods=['GET', 'POST'])
+@login_required
+def backend_charts():     
+    if current_user.username != "admin":   
+        abort(403)
+
+    charts = Charts.query.order_by(Charts.id.asc()).all()        
+    return render_template('/backend/charts.html', charts=charts)
+
+# UPDATE
+@backend.route('/backend/chart/<int:chart_id>/update', methods=['GET', 'POST'])
+@login_required
+def chart_update(chart_id):
+    chart = Charts.query.get_or_404(chart_id)
+    if current_user.username != "admin":        
+        abort(403)
+
+    form = ChartForm()
+    if form.validate_on_submit():
+        chart.title = form.title.data
+        chart.text = form.text.data        
+
+        db.session.commit()
+        flash(u'Your Chart has been updated', 'alert alert-success')
+        return redirect(url_for('backend.backend_charts'))
+
+    form.title.data = chart.title
+    form.text.data = chart.text
+    return render_template('/backend/create_chart.html', title='Updating', form=form, page_name="Update Chart")
+
+# contacts
+@backend.route('/backend/contacts', methods=['GET', 'POST'])
+@login_required
+def backend_contacts():     
+    if current_user.username != "admin":   
+        abort(403)
+
+    contacts = Contacts.query.order_by(Contacts.id.desc()).all()        
+    return render_template('/backend/contacts.html', contacts=contacts)

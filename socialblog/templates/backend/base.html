@@ -53,10 +53,13 @@
                             <nav>
                                 <ul style="float: left; margin-right: 3rem;">
                                   <li><a href="/">Home</a></li>
+                                  <li><a href="/backend/posts">Posts</a></li>
                                   {% if current_user.username=="admin" %}
                                   <!--<li><a href="/backend/users">Users</a></li>-->
+                                  <li><a href="/backend/charts">Charts</a></li>
+                                  <li><a href="/backend/contacts">Contacts</a></li>
                                   {% endif %}
-                                  <li><a href="/backend/posts">Posts</a></li>
+                                  
                                   <li><a href="/logout">Logout</a></li>
                                 </ul>                                
                             </nav>

@@ -1,6 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
-
+    var chart1_title = $("#chart1_title").val();
     var data_json = $("#chart1_data").val();
     if(data_json != undefined)
     {
@@ -112,7 +112,7 @@
               },
               scaleLabel: {
                 display: true,
-                labelString: 'Covid-19 Twitter Trend'
+                labelString: chart1_title
               }
             }]
           },

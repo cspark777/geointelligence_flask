@@ -1,0 +1,56 @@
+{% extends "backend/base.html" %}
+{% block div %}
+<section class="section-content" id="welcome" class="p-b-0">
+    <div class="container">
+        
+        <div class="row">
+            <div class="content col-lg-12">
+                <h4>Charts</h4>
+                <div class="breadcrumb">
+                    <nav aria-label="breadcrumb" class="col-lg-9 col-sm-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/backend/dashboard">Backend</a></li>
+                            <li class="breadcrumb-item active">Charts</a></li>
+                        </ol>
+                    </nav>                    
+                </div>
+                <div class="line"></div>                
+            </div>
+        </div>
+        -
+        <div class="row mb-3">
+            <div class="col-lg-6">
+                <h4>Chart list</h4>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="post_table" class="table table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th width="5%">No</th>
+                            <th width="25%">Title</th>
+                            <th width="60%">Content</th>
+                            <th width="10%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for chart in charts %} 
+                        <tr>                       
+                            <td>{{ loop.index }}</td>
+                            <td>{{ chart.title }}</td>                            
+                            <td>{{ chart.text }} </td>                            
+                            <td>
+                                <div><a href="/chart/{{ chart.id }}" class="btn btn-warning table-btn">VIEW</a></div>
+                                <div><a href="/backend/chart/{{ chart.id }}/update" class="col-12 btn btn-primary table-btn" >EDIT</a></div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

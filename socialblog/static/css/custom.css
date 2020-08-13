@@ -163,3 +163,11 @@ iframe {
 .section-content .line{
 	margin: 0 0;
 }
+
+.secion-article .heading-text{
+	margin-bottom: 0px;
+}
+
+.secion-article .heading-text h4{
+	margin-bottom: 0px;
+}

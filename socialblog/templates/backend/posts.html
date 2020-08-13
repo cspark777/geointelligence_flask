@@ -46,8 +46,8 @@
                         <tr>                       
                             <td>{{ loop.index }}</td>
                             <td>{{ post.title }}</td>
-                            {% if post.text|length > 100 %}
-                                <td>{{ post.text[0:100] }} ...</td>
+                            {% if post.text|length > 400 %}
+                                <td>{{ post.text[0:400] }} ...</td>
                             {% else %} 
                                 <td>{{ post.text }} </td>
                             {% endif %}
