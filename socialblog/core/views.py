@@ -67,7 +67,7 @@ def generate_graph1_data():
     g_graph1_data["y_neutral"].append(y_neutral)
     g_graph1_data["y_positive"].append(y_positive)
 
-    #Timer(g_update_interval_time, generate_graph1_data).start()
+    Timer(g_update_interval_time, generate_graph1_data).start()
 
 generate_graph1_data()
 
