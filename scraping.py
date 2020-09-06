@@ -49,6 +49,9 @@ class MyStreamListener(tweepy.StreamListener):
         favorite_count = status.favorite_count
         
         
+        print("tweet ==> ", id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count)
+
+
         # Store all data in MySQL
         if mydb.is_connected():
             mycursor = mydb.cursor()
