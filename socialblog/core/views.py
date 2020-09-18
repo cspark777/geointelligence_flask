@@ -59,9 +59,9 @@ def generate_graph1_data():
 
     t = int(round(time.time() * 1000))
 
-    y_negative = {"t": t, "y": -graph_data[0][0]}
-    y_neutral = {"t": t, "y": graph_data[0][1]}
-    y_positive = {"t": t, "y": graph_data[0][2]}
+    y_negative = {"t": t, "y": -int(graph_data[0][0])}
+    y_neutral = {"t": t, "y": int(graph_data[0][1])}
+    y_positive = {"t": t, "y": int(graph_data[0][2])}
     
     g_graph1_data["y_negative"].append(y_negative)    
     g_graph1_data["y_neutral"].append(y_neutral)
