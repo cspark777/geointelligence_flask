@@ -8,10 +8,12 @@ import tweepy
 import mysql.connector
 import pandas as pd
 from textblob import TextBlob
+import time
+
 # Streaming With Tweepy 
 # http://docs.tweepy.org/en/v3.4.0/streaming_how_to.html#streaming-with-tweepy
 
-
+ 
 # Override tweepy.StreamListener to add logic to on_status
 class MyStreamListener(tweepy.StreamListener):
     '''
@@ -23,44 +25,50 @@ class MyStreamListener(tweepy.StreamListener):
         '''
         Extract info from tweets
         '''
-        
-        if status.retweeted:
-            # Avoid retweeted info, and only original tweets will be received
-            return True
-        # Extract attributes from each tweet
-        id_str = status.id_str
-        created_at = status.created_at
-        text = deEmojify(status.text)    # Pre-processing the text  
-        sentiment = TextBlob(text).sentiment
-        polarity = sentiment.polarity
-        subjectivity = sentiment.subjectivity
-        
-        user_created_at = status.user.created_at
-        user_location = deEmojify(status.user.location)
-        user_description = deEmojify(status.user.description)
-        user_followers_count =status.user.followers_count
-        longitude = None
-        latitude = None
-        if status.coordinates:
-            longitude = status.coordinates['coordinates'][0]
-            latitude = status.coordinates['coordinates'][1]
+        try:
+            if status.retweeted:
+                # Avoid retweeted info, and only original tweets will be received
+                return True
+            # Extract attributes from each tweet
+            id_str = status.id_str
+            created_at = status.created_at
+            text = deEmojify(status.text)    # Pre-processing the text  
+            sentiment = TextBlob(text).sentiment
+            polarity = sentiment.polarity
+            subjectivity = sentiment.subjectivity
             
-        retweet_count = status.retweet_count
-        favorite_count = status.favorite_count
-        
-        
-        print("tweet ==> ", id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count)
+            user_created_at = status.user.created_at
+            user_location = deEmojify(status.user.location)
+            user_description = deEmojify(status.user.description)
+            user_followers_count =status.user.followers_count
+            longitude = None
+            latitude = None
+            if status.coordinates:
+                longitude = status.coordinates['coordinates'][0]
+                latitude = status.coordinates['coordinates'][1]
+                
+            retweet_count = status.retweet_count
+            favorite_count = status.favorite_count
+            
+            
+            #print("tweet ==> ", id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count)
 
 
-        # Store all data in MySQL
-        if mydb.is_connected():
-            mycursor = mydb.cursor()
-            sql = "INSERT INTO {} (id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)".format(settings.TABLE_NAME)
-            val = (id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, \
-                user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count)
-            mycursor.execute(sql, val)
-            mydb.commit()
-            mycursor.close()
+            # Store all data in MySQL
+            if mydb.is_connected():
+                mycursor = mydb.cursor()
+                sql = "INSERT INTO {} (id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)".format(settings.TABLE_NAME)
+                val = (id_str, created_at, text, polarity, subjectivity, user_created_at, user_location, \
+                    user_description, user_followers_count, longitude, latitude, retweet_count, favorite_count)
+                mycursor.execute(sql, val)
+                mydb.commit()
+                mycursor.close()
+
+            return True
+        except Exception as error:
+            log_message("--- on_status=>{}, sql=>{} ".format(str(error), query))
+            return True
+
     
     
     def on_error(self, status_code):
@@ -69,8 +77,18 @@ class MyStreamListener(tweepy.StreamListener):
         '''
         if status_code == 420:
             # return False to disconnect the stream
-            return False
+            log_message("--- rate limit")
+            time.sleep(15*60)
+        else:
+            log_message("--- on_error=>{}".format(str(error)))
+        return True
 
+def log_message(message):
+    #print(message)
+    
+    hs = open("log.txt","a", encoding="utf8")
+    hs.write(message + "\n")
+    hs.close()
 
 def clean_tweet(self, tweet): 
     ''' 
