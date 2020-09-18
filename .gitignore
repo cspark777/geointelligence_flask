@@ -138,3 +138,4 @@ credentials.py
 automation.py
 .sqlite
 socialblog/data.sqlite
+log.txt
