@@ -40,6 +40,6 @@ stripe==2.48.0
 toml==0.10.1
 urllib3==1.25.9
 URLObject==2.4.3
-Werkzeug==0.16.0
+Werkzeug==2.2.3
 wrapt==1.12.1
 WTForms==2.3.1
